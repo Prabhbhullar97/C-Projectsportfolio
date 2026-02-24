@@ -1,0 +1,71 @@
+@model CarInsuranceApp.Models.Insuree
+
+@{
+    ViewBag.Title = "Get a Quote";
+}
+
+<h2>Get a Car Insurance Quote</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, "First Name", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, "Last Name", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailAddress, "Email Address", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateOfBirth, "Date of Birth", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CarYear, "Car Year", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.CarYear, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CarMake, "Car Make", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.CarMake, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CarModel, "Car Model", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.CarModel, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            <label>Have you ever had a DUI?</label>
+            @Html.CheckBoxFor(model => model.Dui)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpeedingTickets, "Number of Speeding Tickets", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.SpeedingTickets, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            <label>Do you want Full Coverage?</label>
+            @Html.CheckBoxFor(model => model.CoverageType)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Calculate Quote" class="btn btn-primary" />
+        </div>
+    </div>
+}
